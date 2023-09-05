@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import image from '../Components/Screenshot 2023-08-31 162111.png'
 import { useMyContext } from '../Context/MyContext'
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
-  const { user } = useMyContext();
+  const { user, setUser } = useMyContext();
   const navigate = useNavigate();
   const clickHandler = ()=>{
     navigate('/mycohorts');
@@ -16,6 +16,9 @@ export default function Profile() {
     localStorage.removeItem('userInfo');
     navigate('/login');
   }
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('userInfo')));
+  },[])
   return (
     <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', backgroundColor: '#1e1e1e',overflow:'hidden' }}>
       <div style={{ color: 'white', fontSize: '30px', transform: 'translate(100px,50px)', cursor: 'pointer' }} onClick={() => back()}>
@@ -40,7 +43,7 @@ export default function Profile() {
               {user.email}
             </p>
             <p className='content-center text-2xl font-black' onClick={()=>clickHandler()}
-              style={{ color: 'white', letterSpacing: '1.5px', textShadow: '2px 2px 0px #C76BFF',cursor:'pointer' }}>
+              style={{ color: 'white', letterSpacing: '1.5px',textDecoration:'underline' ,cursor:'pointer' }}>
               Cohorts joined: {user.cohorts.length}
             </p>
           </div>

@@ -10,6 +10,9 @@ export default function MyCohorts() {
   const back = () => {
     navigate('/profile')
   }
+  const handleVideoPage = async (elem)=>{
+    navigate('/videopage',{state:{elementData:elem}});
+  }
   return (
     <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', backgroundColor: '#1e1e1e', overflow: 'hidden' }}>
       <div style={{ color: 'white', fontSize: '30px', transform: 'translate(100px,50px)', cursor: 'pointer' }} onClick={() => back()}>
@@ -23,7 +26,7 @@ export default function MyCohorts() {
         <div style={{ display: 'flex', flexDirection: 'row', marginTop: '50px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'flex-start' }}>
             {user.cohorts && user.cohorts.map((elem) => (
-              <div style={{ backgroundColor: 'white', height: '100px', width: '400px', borderRadius: '12px', display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom:'40px' }}>
+              <div style={{ backgroundColor: 'white', height: '100px', width: '400px', borderRadius: '12px', display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom:'40px'}} onClick={handleVideoPage(elem)}>
                 <div style={{ paddingRight: '20px' }}>
                   <img src={image} style={{ height: '150px' }} alt="" />
                 </div>

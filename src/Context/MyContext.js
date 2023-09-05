@@ -10,7 +10,7 @@ export function MyContextProvider({ children }) {
   useEffect(()=>{
     console.log(user);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    setUser(userInfo);
+    setUser(userInfo || null);
     if(!userInfo){
     }
   },[navigate])

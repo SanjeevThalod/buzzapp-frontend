@@ -18,8 +18,8 @@ export default function Navbar() {
       href: user ? '/dashboarduser' : '/login',
       current: false
     },
-    { name: 'SignUp', 
-      href: '/signup', 
+    { name: user?'My Cohorts':'SignUp', 
+      href: user?'/mycohorts':'/signup', 
       current: false },
     { name: 'Contact Us', 
       href: '#', 
